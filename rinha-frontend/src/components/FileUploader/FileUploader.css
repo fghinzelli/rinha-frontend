@@ -1,0 +1,10 @@
+input[type="file"] {
+  display: none;
+}
+
+label {
+  border: 1px solid black;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
