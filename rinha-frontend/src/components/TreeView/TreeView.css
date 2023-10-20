@@ -3,9 +3,11 @@ main {
   justify-content: center;
   margin: 0 auto;
   text-align: center;
+  max-width: 800px;
   padding: 2em;
 }
 
 .treeview {
   text-align: left;
+  width: 100%;
 }
