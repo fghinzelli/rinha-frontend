@@ -1,3 +1,9 @@
+:root {
+--gray: #BFBFBF;
+--green: #4E9590;
+--salmon: #F2CAB8;
+}
+
 main {
   align-items: center;
   justify-content: center;
@@ -10,4 +16,52 @@ main {
 .treeview {
   text-align: left;
   width: 100%;
+}
+
+.object-label {
+  color: var(--green);
+}
+
+.array-indicator-start::after {
+   content: " [";
+   color: var(--salmon);
+}
+
+.array-indicator-end::after {
+  content: "]"; 
+  color: var(--salmon);
+  padding-left: 1.2em;
+}
+
+.array-group {
+  border-left: 1px var(--gray) solid;
+  padding-left: 1.2em;
+  padding-top: 0.6em;
+  padding-bottom: 0.3em;
+}
+
+.array-children {
+  border-left: 1px var(--gray) solid;
+  padding-left: 1.2em;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+}
+
+.treeview > div {
+  border-left: none;
+  padding-left: 0;
+}
+
+.treeview > div::after {
+  padding-left: 0;
+}
+
+.object-value {
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+}
+
+.array-index {
+  color: var(--gray);
+  margin-left: -0.3em;
 }

@@ -11,9 +11,12 @@ function App() {
   const [fileName, setFileName] = useState('');
   const [jsonError, setJsonError] = useState(false);
   const [jsonResult, setJsonResult] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const loadFile = event => {
+    setLoading(true);
     toggleErrorMessage(false);
+    setJsonResult(null);
     let jsonFile = event.target.files[0];
     setFileName(jsonFile.name)
     if (jsonFile.type !== 'application/json') {
@@ -22,9 +25,11 @@ function App() {
     readJSON(jsonFile)
       .then(result => {
         setJsonResult(result);
+        setLoading(false);
       }).catch(error => {
         console.log("Error on load JSON: ", error)
         toggleErrorMessage(true)
+        setLoading(false);
       })
   }
 
@@ -59,7 +64,8 @@ function App() {
       <Header />
       <main>
         <FileUploader fileUploaded={fileUploaded} loadFile={loadFile} />
-        {jsonResult ? <TreeView fileName={fileName} jsonData={jsonResult} /> : null}
+        {loading ? 'Carregando, aguarde...' : ''}
+        {jsonResult && !jsonError ? <TreeView fileName={fileName} jsonData={jsonResult} /> : null}
         {jsonError ? <Message txtMessage={txtMessage} /> : null}
       </main>
     </div>
